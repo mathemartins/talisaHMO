@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+
+                <h1>Insurance Packages</h1>
+
+                {% if cart.insuranceplans.exists %}
+                <table class="table cart-table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Insurance Plan</th>
+                      <th>Insurance Price</th>
+                    </tr>
+                  </thead>
+                  <tbody class='cart-body'>
+                    {% for insuranceplan in cart.insuranceplans.all %}
+                    <tr class='cart-product'>
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td><a href='{{ insuranceplan.get_absolute_url }}'>{{ insuranceplan.title }}</a>
+                        {% include 'carts/snippets/remove-insuranceplan.html' with insuranceplan_id=insuranceplan.id %}
+                      </td>
+                      <td>{{ insuranceplan.price }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                      <td colspan="2"></td>
+                      <td><b>Subtotal</b> $<span class='cart-subtotal'>{{ cart.subtotal }}</span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td><b>Total</b> $<span class='cart-total'>{{ cart.total }}</span></td>
+                    </tr>
+                    <tr>
+                      <td colspan="2"></td>
+                      <td><a class='btn btn-lg btn-success' href='{% url "cart:checkout" %}'>Checkout</a></td>
+                    </tr>
+
+                  </tbody>
+                </table>
+
+                <div class='cart-item-remove-form' style='display:none'>
+
+                    {% include 'carts/snippets/remove-insuranceplan.html' %}
+                  </div>
+
+                {% else %}
+                <p class='lead'>Cart is empty</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

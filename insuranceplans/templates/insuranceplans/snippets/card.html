@@ -1,0 +1,21 @@
+
+<div class="col-md-4 animate-box">
+    <div class="blog-entry">
+        <a href="{{ instance.get_absolute_url }}" class="blog-img" style="background-image: url({{ instance.image.url }});">
+        </a>
+        <div class="desc">
+            <p class="date">
+                <span><a href="#">HMO</a></span>
+                <span><a href="#"> <i class="icon-speech-bubble"></i></a></span>
+            </p>
+            <h3>
+                <a href="{{ instance.get_absolute_url }}">
+                    {{ instance.title|capfirst }}
+                </a>
+            </h3>
+            <p>{{ instance.description|linebreaks|truncatewords:14 }}</p>
+            <p><a href="{{ instance.get_absolute_url }}">View<i class="icon-arrow-right3"></i></a></p>
+            {% include 'insuranceplans/snippets/update-cart.html' with insuranceplan=instance cart=cart %}
+        </div>
+    </div>
+</div>

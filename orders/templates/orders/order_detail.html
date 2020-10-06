@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+
+                <h1>Order {{ object.order_id }}</h1><hr/>
+
+                <div class=''>
+                    <p>Items: {% for insuranceplan in object.cart.insuranceplans.all %}{{ insuranceplan }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                    <p>Shipping Address: {{ object.shipping_address_final }}</p>
+                    <p>Billing Address: {{ object.billing_address_final }}</p>
+                    <p>Subtotal: {{ object.cart.total }}</p>
+                    <p>Shipping Total: {{ object.shipping_total }}</p>
+                    <p>Order Total: {{ object.total }}</p>
+                    <p>Order Status: {{ object.get_status }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

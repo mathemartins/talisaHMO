@@ -1,0 +1,53 @@
+{% url 'home' as home_url %}
+{% url 'contact' as contact_url %}
+
+{% url 'login' as login_url %}
+{% url 'logout' as logout_url %}
+{% url 'register' as register_url %}
+{% url 'insuranceplans:list' as insuranceplan_list_url %}
+{% url 'account:home' as account_url %}
+{% url 'cart:home' as cart_url %}
+
+
+<div class="menu-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8">
+                <div class="menu-1">
+                    <ul>
+                        <li class="{% if request.path == home_url %}active{% endif %}"><a href="{{ home_url }}">Home</a></li>
+                        <li class="has-dropdown">
+                            <a href="#">Company</a>
+                            <ul class="dropdown">
+                                <li><a href="#">About</a></li>
+                                <li><a href="{{ contact_url }}">Contact</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="{{ insuranceplan_list_url }}">Plans</a></li>
+                        {% if request.user.is_authenticated %}
+                            <li class="has-dropdown">
+                                <a href="{{ account_url }}">Account</a>
+                                <ul class="dropdown">
+                                    <li>
+                                        <a href="{{ account_url }}" class="{% if request.path == account_url %}active{% endif %}">
+                                            Home
+                                        </a>
+                                    </li>
+                                    <li><a href="{{ account_url }}#billing">Billing</a></li>
+                                    <li><a href="{% url "account:user-insuranceplan-history" %}">History</a></li>
+                                    <li><a href="{% url 'library' %}">Library</a></li>
+                                    <li><a href="{{ logout_url }}">Logout</a></li>
+                                </ul>
+                            </li>
+                        {% else %}
+                            <li><a href="{{ register_url }}">Register</a></li>
+                            <li><a href="{{ login_url }}">Login</a></li>
+                        {% endif %}
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="{{ cart_url }}">Cart</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,12 +1,40 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
+
+{% block aside_bar %}
+    <aside id="colorlib-hero" class="breadcrumbs">
+		<div class="flexslider">
+			<ul class="slides">
+                <li style="background-image: url({% static 'images/cost.jpg'%});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                                <div class="slider-text-inner">
+                                    <h1>Check out</h1>
+                                    <h3>We urge you to review you orders before proceeding to checkout</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+	  	</div>
+	</aside>
+{% endblock aside_bar %}
 
 
 {% block content %}
+    <br>
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-sm-offset-3">
 
                 <h1>Insurance Packages</h1>
+                <hr width="80%">
+                <br>
 
                 {% if cart.insuranceplans.exists %}
                 <table class="table cart-table">

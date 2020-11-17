@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
+
 
 {% block content %}
 
@@ -11,9 +13,21 @@
             {% for obj in object_list %}
                 {{ forloop.counter }}
                 {% include 'insuranceplans/snippets/card.html' with instance=obj.content_object %}
+            {% empty %}
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                            <div class="slider-text-inner">
+                                <p>Empty... please click on 'PLANS' at the menu bar to buy a health insurances plan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
         </div>
 
     </div>
+    <br>
+    <br>
 
 {% endblock %}

@@ -1,12 +1,13 @@
 {% url 'home' as home_url %}
 {% url 'contact' as contact_url %}
-
+{% url 'articles:article_list' as article_url %}
 {% url 'login' as login_url %}
 {% url 'logout' as logout_url %}
 {% url 'register' as register_url %}
 {% url 'insuranceplans:list' as insuranceplan_list_url %}
 {% url 'account:home' as account_url %}
 {% url 'cart:home' as cart_url %}
+{% url '/admin-Talisa-Ng/' as admin_url %}
 
 
 <div class="menu-wrap">
@@ -26,7 +27,7 @@
                         <li><a href="{{ insuranceplan_list_url }}">Plans</a></li>
                         {% if request.user.is_authenticated %}
                             <li class="has-dropdown">
-                                <a href="{{ account_url }}">Account</a>
+                                <a href="{{ account_url }}" class="btn btn-primary btn-outline">Account</a>
                                 <ul class="dropdown">
                                     <li>
                                         <a href="{{ account_url }}" class="{% if request.path == account_url %}active{% endif %}">
@@ -43,7 +44,10 @@
                             <li><a href="{{ register_url }}">Register</a></li>
                             <li><a href="{{ login_url }}">Login</a></li>
                         {% endif %}
-                        <li><a href="#">Blog</a></li>
+                        {% if request.user.is_staff %}
+                            <li><a href="/admin-Talisa-Ng/" class="btn btn-primary btn-outline">Admin</a></li>
+                        {% endif %}
+                        <li><a href="{{ article_url }}">Blog</a></li>
                         <li><a href="{{ cart_url }}">Cart</a></li>
                     </ul>
                 </div>

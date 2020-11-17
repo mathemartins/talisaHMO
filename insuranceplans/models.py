@@ -1,6 +1,7 @@
 import random
 import os
 from django.conf import settings
+from django.core.validators import FileExtensionValidator
 
 from django.db import models
 from django.db.models import Q
@@ -96,6 +97,11 @@ class Insuranceplan(models.Model):
         qs = self.insuranceplanfile_set.all()
         return qs
 
+    def check_image(self):
+        if self.image:
+            return self.image.url
+        return "https://talisa-hmo.s3.eu-west-2.amazonaws.com/healthcare/images/blog-1.jpg"
+
 
 def insuranceplan_pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
@@ -127,7 +133,8 @@ class InsuranceplanFile(models.Model):
     name = models.CharField(max_length=120, null=True, blank=True)
     file = models.FileField(
         upload_to=upload_insuranceplan_file_loc,
-        storage=ProtectedS3Storage(),  # FileSystemStorage(location=settings.PROTECTED_ROOT)
+        storage=ProtectedS3Storage(),
+        # validators=[FileExtensionValidator(allowed_extensions=['pdf'])], # FileSystemStorage(location=settings.PROTECTED_ROOT)
     )  # path
     # filepath        = models.TextField() # '/protected/path/to/the/file/myfile.mp3'
     free = models.BooleanField(default=False)  # purchase required

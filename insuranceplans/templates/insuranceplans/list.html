@@ -7,20 +7,20 @@
     <aside id="colorlib-hero" class="breadcrumbs">
 		<div class="flexslider">
 			<ul class="slides">
-		   	<li style="background-image: url({% static 'images/img_bg_6.jpg'%});">
-		   		<div class="overlay"></div>
-		   		<div class="container">
-		   			<div class="row">
-			   			<div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
-			   				<div class="slider-text-inner">
-			   					<h1>Our <strong>Departments</strong></h1>
-									<h2>html5 Bootstrap Templates Made by colorlib.com</h2>
-			   				</div>
-			   			</div>
-			   		</div>
-		   		</div>
-		   	</li>
-		  	</ul>
+                <li style="background-image: url({% static 'images/blog-1.jpg'%});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                                <div class="slider-text-inner">
+                                    <h1>Our <strong>Insurance Plans</strong></h1>
+                                    <h2>These are our available insurance plans...</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
 	  	</div>
 	</aside>
 {% endblock aside_bar %}
@@ -33,6 +33,17 @@
 
                 {% for obj in object_list %}
                     {% include 'insuranceplans/snippets/card.html' with instance=obj %}
+                {% empty %}
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                                <div class="slider-text-inner">
+                                    <h2>No Current plan</h2>
+                                    <p>We currently have no available plan please visit often for more updates on our health plan.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 {% endfor %}
 
 			</div>

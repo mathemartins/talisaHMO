@@ -1,82 +1,114 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
+
 {% block content %}
+
+<div class="colorlib-loader"></div>
+
+<div id="page">
+
+        <aside id="colorlib-hero" class="breadcrumbs">
+            <div class="flexslider">
+                <ul class="slides">
+                <li style="background-image: url({% static 'images/pulse-trace.jpg' %});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                                <div class="slider-text-inner">
+                                    <h1>Name: {{ request.user.get_full_name }}</h1>
+                                    <h2>Email: {{ request.user.email }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </aside>
 
     <div class="container">
         <div class='row'>
-<div class='col-12'>
-<h1>Account</h1>
-<hr/>
-</div>
-<div class='col-12 col-md-3 my-3'>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Support</h4>
-            <div class='list-group'>
-                <a class='list-group-item' href='{% url "about" %}'>About</a>
-                <a class='list-group-item' href='{% url "contact" %}'>Contact</a>
+
+            <div class='col-12'>
+                <h1>Account</h1>
+                <hr/>
             </div>
-      </div>
-    </div>
-</div>
 
-
-
-<div class='col-12 col-md-3 my-3' id='billing'>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Billing</h4>
-            <div class='list-group'>
-                <a class='list-group-item' href='{% url "orders:list" %}'>Orders</a>
-                <a class='list-group-item' href='{% url "billing-payment-method" %}'>Payment Methods</a>
-                <a class='list-group-item' href='{% url "addresses" %}'>Addresses</a>
-
-
+            <div class="col-12 col-md-4 my-3 animate-box">
+                <div class="blog-entry">
+                    <a class="blog-img" style="background-image: url({% static 'images/anesthesia.jpg' %});"></a>
+                    <div class="desc">
+                        <h3>Support</h3>
+                        <ul class="plan">
+                            <li><span>About</span><span><a href='{% url "about" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                            <li><span>Contact</span><span><a href='{% url "contact" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-      </div>
-    </div>
-</div>
+
+            <div class="col-12 col-md-4 my-3 animate-box">
+                <div class="blog-entry">
+                    <a class="blog-img" style="background-image: url({% static 'images/blog-1.jpg' %});"></a>
+                    <div class="desc">
+                        <h3>Billing</h3>
+                        <ul class="plan">
+                            <li><span>Orders</span><span><a href='{% url "orders:list" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                            <li><span>Payment Methods</span><span><a href='{% url "billing-payment-method" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                            <li><span>Addresses</span><span><a href='{% url "addresses" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 
 
-<div class='col-12 col-md-3 my-3'>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Account Details</h4>
-        <div class='list-group'>
-            <a class='list-group-item' href='{% url "account:user-update" %}'>Update Details</a>
-            <a class='list-group-item' href='{% url "password_change" %}'>Change Password</a>
-            <a class='list-group-item' href='{% url "library" %}'>Library</a>
+            <div class="col-12 col-md-4 my-3 animate-box">
+                <div class="blog-entry">
+                    <a class="blog-img" style="background-image: url({% static 'images/medical-name.jpg' %});"></a>
+                    <div class="desc">
+                        <h3>Account Details</h3>
+                        <ul class="plan">
+                            <li><span>Update Details</span><span><a href='{% url "account:user-update" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                            <li><span>Change Password</span><span><a href='{% url "password_change" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                            <li><span>Library</span><span><a href='{% url "library" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-12 col-md-4 my-3 animate-box">
+                <div class="blog-entry">
+                    <a class="blog-img" style="background-image: url({% static 'images/doctor123.jpg' %});"></a>
+                    <div class="desc">
+                        <h3>Preferences</h3>
+                        <ul class="plan">
+                            <li><span>Email Marketing</span><span><a href='{% url "marketing-pref" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-4 my-3 animate-box">
+                <div class="blog-entry">
+                    <a class="blog-img" style="background-image: url({% static 'images/hospital-ward.jpg' %});"></a>
+                    <div class="desc">
+                        <h3>History</h3>
+                        <ul class="plan">
+                            <li><span>Insurance Plans</span><span><a href='{% url "account:user-insuranceplan-history" %}'><i class="icon-arrow-right3"></i></a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
     </div>
+
 </div>
 
-
-<div class='col-12 col-md-3 my-3'>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Preferences</h4>
-        <div class='list-group'>
-            <a class='list-group-item' href='{% url "marketing-pref" %}'>Email Marketing</a>
-        </div>
-      </div>
-    </div>
-</div>
-
-
-<div class='col-12 col-md-3 my-3'>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">History</h4>
-          <div class='list-group'>
-              <a class='list-group-item' href='{% url "account:user-insuranceplan-history" %}'>Insurance Plans</a>
-          </div>
-      </div>
-    </div>
-</div>
-
-
-</div>
-    </div>
 
 {% endblock %}

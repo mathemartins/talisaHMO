@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect
 
+from articles.models import Article
 from .forms import ContactForm
 
 
@@ -15,7 +16,10 @@ def home_page(request):
     }
     if request.user.is_authenticated:
         context["premium_content"] = "YEAHHHHHH"
-    return render(request, "home_page.html", context)
+
+    daily_articles = Article.objects.all()[:3]
+
+    return render(request, "home_page.html", context={"daily_articles": daily_articles})
 
 
 def about_page(request):

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.humanize',
     'django.contrib.staticfiles',
 
     'storages',
@@ -53,6 +54,7 @@ INSTALLED_APPS = [
     'insuranceplans',
     'search',
     'tags',
+    'articles',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'

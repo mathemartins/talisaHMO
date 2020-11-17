@@ -18,7 +18,7 @@ from django.conf.urls import url
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
-from django.urls import path, include
+from django.urls import path, include, re_path
 from django.views.generic import RedirectView, TemplateView
 
 from accounts.views import LoginView, GuestRegisterView, RegisterView
@@ -31,14 +31,16 @@ from marketing.views import MarketingPreferenceUpdateView, MailchimpWebhookView
 from orders.views import LibraryView
 from talisa.views import home_page, about_page, contact_page
 
+
 urlpatterns = [
     path('', home_page, name='home'),
     path('about/', about_page, name='about'),
+    path('articles/', include(('articles.urls', 'articles'), namespace='articles')),
 
     path('accounts/', RedirectView.as_view(url='/account')),
     path('account/', include(('accounts.urls', 'account'), namespace='account')),
     path('accounts/', include("accounts.passwords.urls")),
-    path('admin/', admin.site.urls),
+    path('admin-Talisa-Ng/', admin.site.urls),
 
     path('login/', LoginView.as_view(), name='login'),
     path('register/guest/', GuestRegisterView.as_view(), name='guest_register'),
@@ -67,5 +69,14 @@ urlpatterns = [
     url(r'^settings/email/$', MarketingPreferenceUpdateView.as_view(), name='marketing-pref'),
     url(r'^webhooks/mailchimp/$', MailchimpWebhookView.as_view(), name='webhooks-mailchimp'),
 ]
+
+# administrator backend service url
+# urlpatterns += [
+#     path('admin-Talisa-Ng/', admin.site.urls),
+# ]
+
+# url to catch any unmatch url for 404...
+urlpatterns += [re_path(r'^.*', TemplateView.as_view(template_name='404.html'))]
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 
 {% block base_head %}
     <link rel='stylesheet' href='{% static "css/main.css" %}' >
@@ -12,7 +13,7 @@
     <aside id="colorlib-hero">
         <div class="flexslider">
             <ul class="slides">
-            <li style="background-image: url({% static 'images/img_bg_6.jpg' %});">
+            <li style="background-image: url({% static 'images/hospital-ward.jpg' %});">
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="row">
@@ -26,7 +27,7 @@
                     </div>
                 </div>
             </li>
-            <li style="background-image: url({% static 'images/img_bg_5.jpg' %});">
+            <li style="background-image: url({% static 'images/stethoscope.jpg' %});">
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="row">
@@ -75,23 +76,6 @@
 {% endblock aside_bar %}
 
 {% block content %}
-    {% if request.user.is_authenticated %}
-
-        <div id="colorlib-services">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-6 col-sm-offset-3">
-                        <h2 class="text-center"> Welcome {{ request.user.full_name }}</h2>
-                        <hr/>
-                        <a href="/account/" class="btn btn-primary btn-block">
-                            <i class="fa fa-arrow-right"></i> Continue to account
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    {% else %}
 
         <div id="colorlib-counter" class="colorlib-counters">
 		<div class="overlay"></div>
@@ -507,60 +491,30 @@
             <div class="container">
                 <div class="row animate-box">
                     <div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-                        <h2>Recent blog</h2>
-                        <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                        <h2>Recent News</h2>
+                        <p>Learn more about our latest updates on our health insurance plans.</p>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4 animate-box">
-                        <div class="blog-entry">
-                            <a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-1.jpg' %});"></a>
-                            <div class="desc">
-                                <p class="date">
-                                    <span><a href="#">Admin</a></span>
-                                    <span>June 8 2017</span>
-                                    <span><a href="#">4 <i class="icon-speech-bubble"></i></a></span>
-                                </p>
-                                <h3><a href="blog.html">Here's why yoga is best for your health</a></h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                <p><a href="#">Read more <i class="icon-arrow-right3"></i></a></p>
+                    {% for daily_article in daily_articles %}
+                        <div class="col-md-4 animate-box">
+                            <div class="blog-entry">
+                                <a href="blog.html" class="blog-img" style="background-image: url({{ daily_article.check_image_url }});"></a>
+                                <div class="desc">
+                                    <p class="date">
+                                        <span><a href="#">{{ daily_article.author.get_full_name }}</a></span><hr>
+                                        <span>{{ daily_article.created|naturaltime }}</span>
+                                        <span><a href="#">4 <i class="icon-speech-bubble"></i></a></span>
+                                    </p>
+                                    <h3><a href="{% url 'articles:article_detail' slug=daily_article.slug %}">{{ daily_article.title }}</a></h3>
+                                    <p>{{ daily_article.description|safe|truncatewords:7 }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 animate-box">
-                        <div class="blog-entry">
-                            <a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-2.jpg' %});"></a>
-                            <div class="desc">
-                                <p class="date">
-                                    <span><a href="#">Admin</a></span>
-                                    <span>June 8 2017</span>
-                                    <span><a href="#">4 <i class="icon-speech-bubble"></i></a></span>
-                                </p>
-                                <h3><a href="blog.html">live better get to know your medical technology</a></h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                <p><a href="#">Read more <i class="icon-arrow-right3"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4 animate-box">
-                        <div class="blog-entry">
-                            <a href="blog.html" class="blog-img" style="background-image: url({% static 'images/blog-3.jpg' %});"></a>
-                            <div class="desc">
-                                <p class="date">
-                                    <span><a href="#">Admin</a></span>
-                                    <span>June 8 2017</span>
-                                    <span><a href="#">4 <i class="icon-speech-bubble"></i></a></span>
-                                </p>
-                                <h3><a href="blog.html">Eating apple is the source of energy</a></h3>
-                                <p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
-                                <p><a href="#">Read more <i class="icon-arrow-right3"></i></a></p>
-                            </div>
-                        </div>
-                    </div>
+                    {% empty %}
+                        <p>Currently we have no news available visit often for more updates</p>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-
-    {% endif %}
-
 {% endblock %}

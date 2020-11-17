@@ -1,0 +1,180 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load humanize %}
+
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+<script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+<script>
+    var simplemde = new SimpleMDE();
+</script>
+
+
+
+{% block content %}
+
+	<div class="colorlib-loader"></div>
+
+    <div id="page">
+
+        <aside id="colorlib-hero" class="breadcrumbs">
+            <div class="flexslider">
+                <ul class="slides">
+                <li style="background-image: url({{ article.check_image_url }});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                                <div class="slider-text-inner">
+                                    <h1>{{ article.title }}</h1>
+                                        <h2>{{ article.description|safe|truncatewords:7 }}</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="colorlib-doctor">
+            <div class="container">
+                <div class="row animate-box">
+                    <div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
+                        <h2>{{ article.title }}</h2>
+                        <p>{{ article.description|safe }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 text-center animate-box">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="doctor-desc">
+                                    <span class="specialty">Written by: {{ article.author.get_full_name }}</span>
+                                    <p>{{ article.body|safe }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{#        <div id="colorlib-testimonial" class="colorlib-bg-section">#}
+{#            <div class="container">#}
+{#                <div class="row animate-box">#}
+{#                    <div class="col-md-12 colorlib-heading">#}
+{#                        <h2>comments</h2>#}
+{#                    </div>#}
+{#                </div>#}
+{##}
+{#                <div class="row">#}
+{#                    <div class="col-md-10">#}
+{#                        {% for comment in comments %}#}
+{#                        <div class="item">#}
+{#							<div class="testimony">#}
+{#								<span class="img-user" style="background-image: url({{ comment.by.get_full_name }});"></span>#}
+{#								<span class="user">{{ comment.by.get_full_name }}</span>#}
+{#								<blockquote>#}
+{#									<p>{{ comment.content }}</p>#}
+{#								</blockquote>#}
+{#							</div>#}
+{#						</div>#}
+{#                        {% empty %}#}
+{#                            <div class="item">#}
+{#                                <div class="testimony">#}
+{#                                    <blockquote>#}
+{#                                        <p>No comment yet be the first to comment this article...</p>#}
+{#                                    </blockquote>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+
+        <div class="gototop js-top">
+            <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
+        </div>
+
+    </div>
+
+
+    <script>
+        $( function () {
+            'use strict';
+            $(document).ready(function () {
+                // Initialize data
+                var comment_form = $('.comment_form');
+                var comment_formMethod = comment_form.attr('method');
+                var comment_formEndpoint = comment_form.attr('action');
+
+                function displaySubmitting(submitBtn, defaultText, doSubmit) {
+                    if (doSubmit) {
+                        submitBtn.addClass("disabled");
+                        submitBtn.html("<span class='spinner-grow spinner-grow-sm' role='status' aria-hidden='true'></span> Sending Data..");
+                    } else {
+                        submitBtn.removeClass("disabled");
+                        submitBtn.add(defaultText);
+                    }
+                }
+
+                var comment_formSubmitBtn = comment_form.find("[type='submit']");
+                var comment_formSubmitBtnText = comment_formSubmitBtn.text();
+
+                comment_form.submit(function (event) {
+                    event.preventDefault();
+                    console.log("click attempted");
+
+                    {% include 'ajax_csrf/ajax_csrf_token.js' %}
+
+                    var comment_formData = {
+                        "comment_detail": $('#comment_detail').val(),
+                    };
+                    console.log(comment_formData);
+
+                    displaySubmitting(comment_formSubmitBtn, "", true);
+
+                    $.ajax({
+                        method: comment_formMethod,
+                        url: comment_formEndpoint,
+                        data: comment_formData,
+                        contentType: 'application/x-www-form-urlencoded',
+                        dataType: 'json',
+
+                        success: function (data) {
+                            comment_form[0].reset();
+                            console.log(data.message);
+                            toastr.success(data.message);
+                            // perform ajax call to view server
+                            setTimeout(function(){
+                                displaySubmitting(comment_formSubmitBtn, comment_formSubmitBtnText, false)
+                            }, 500);
+                            setTimeout(function () {
+                                window.location.replace("{% url 'articles:article_detail' article.slug %}");
+                            }, 5000);
+                        },
+
+                        error: function (error) {
+                            console.log(error);
+                            // var errorData = error.responseJSON('detail');
+                            comment_form[0].reset();
+                            toastr.error(error.message);
+                            //swal( "Oops" , error ,  "error" )
+                            setTimeout(function(){
+                                displaySubmitting(comment_formSubmitBtn, comment_formSubmitBtnText, false)
+                            }, 500);
+                            setTimeout(function () {
+                                window.location.replace("{% url 'articles:article_detail' article.slug %}");
+                            }, 5000);
+                        }
+                    })
+                })
+            })
+        } (jQuery));
+    </script>
+
+{% endblock %}

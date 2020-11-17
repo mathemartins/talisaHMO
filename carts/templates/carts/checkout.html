@@ -5,84 +5,80 @@
 
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
+            <div class="col-sm-8 col-sm-offset-3">
 
                 {% if not billing_profile %}
-    <div class='row text-center'>
-    <div class=''>
-        <p class='lead'>Login</p>
-        {% include 'accounts/snippets/form.html' with form=login_form next_url=request.build_absolute_uri %}
-    </div>
-    <div class=''>
-        Continue as Guest
 
-        {% url "guest_register" as guest_register_url %}
-        {% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %}
-    </div>
+                    <div class='row text-center'>
+                        <div class=''>
+                            <p class='lead'>Login</p>
+                            {% include 'accounts/snippets/form.html' with form=login_form next_url=request.build_absolute_uri %}
+                        </div>
+                        <div class=''>
+                            Continue as Guest
+                            {% url "guest_register" as guest_register_url %}
+                            {% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %}
+                        </div>
+                    </div>
 
-    </div>
+                {% else %}
 
-{% else %}
+                    {% if not object.shipping_address and shipping_address_required %}
 
-        {% if not object.shipping_address and shipping_address_required %}
+                        <div class='row'>
+                            <div class=''>
+                                <p class='lead'>Shipping Address</p>
+                                <hr/>
+                            </div>
+                            <div class=''>
+                                {% url "checkout_address_create" as checkout_address_create %}
+                                {% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='shipping' %}'
+                             </div>
+                            <div class=''>
+                                {% url 'checkout_address_reuse' as checkout_address_reuse %}
+                                {% include 'addresses/prev_addresses.html' with address_qs=address_qs next_url=request.build_absolute_uri address_type='shipping' action_url=checkout_address_reuse %}
+                            </div>
+                        </div>
 
-         <div class='row'>
-            <div class=''>
-                <p class='lead'>Shipping Address</p>
-                <hr/>
-            </div>
-            <div class=''>
+                    {% elif not object.billing_address %}
 
-                {% url "checkout_address_create" as checkout_address_create %}
-                {% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='shipping' %}'
+                        <div class='row'>
+                            <div class=''>
+                                 <p class='lead'>Billing Address</p>
+                                <hr/>
+                            </div>
+                            <div class=''>
+                                {% url "checkout_address_create" as checkout_address_create %}
+                                {% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='billing' %}
+                            </div>
+                            <div class=''>
+                                {% url 'checkout_address_reuse' as checkout_address_reuse %}
+                                {% include 'addresses/prev_addresses.html' with address_qs=address_qs next_url=request.build_absolute_uri  address_type='billing' action_url=checkout_address_reuse %}
+                            </div>
+                        </div>
 
-             </div>
-         <div class=''>
-            {% url 'checkout_address_reuse' as checkout_address_reuse %}
-            {% include 'addresses/prev_addresses.html' with address_qs=address_qs next_url=request.build_absolute_uri address_type='shipping' action_url=checkout_address_reuse %}
-            </div>
-        </div>
+                    {% else %}
 
+                        {% if not has_card %}
+                            <!-- enter credit card here -->
+                            <div class='stripe-payment-form' data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title='Add Payment Method'></div>
 
-        {% elif not object.billing_address %}
-        <div class='row'>
-            <div class=''>
-                 <p class='lead'>Billing Address</p>
-                <hr/>
-            </div>
-            <div class=''>
+                        {% else %}
+                            <h1>Finalize Checkout</h1>
+                            <p>Cart Items: {% for insuranceplan in object.cart.insuranceplans.all %}{{ insuranceplan }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                            <p>Shipping Address: {{ object.shipping_address_final }}</p>
+                            <p>Billing Address: {{ object.billing_address_final }}</p>
+                            <p>Payment Method: {{ billing_profile.default_card }} (<a href="{{ billing_profile.get_payment_method_url }}?next={{ request.build_absolute_uri }}">Change</a>)</p>
+                            <p>Cart Total: {{ object.cart.total }}</p>
+                            <p>Shipping Total: {{ object.shipping_total }}</p>
+                            <p>Order Total: {{ object.total }}</p>
 
-            {% url "checkout_address_create" as checkout_address_create %}
-            {% include 'addresses/form.html' with form=address_form next_url=request.build_absolute_uri action_url=checkout_address_create address_type='billing' %}
-            </div>
-              <div class=''>
-                {% url 'checkout_address_reuse' as checkout_address_reuse %}
-             {% include 'addresses/prev_addresses.html' with address_qs=address_qs next_url=request.build_absolute_uri  address_type='billing' action_url=checkout_address_reuse %}
-         </div>
-
-
-        </div>
-        {% else %}
-            {% if not has_card %}
-                <!-- enter credit card here -->
-                <div class='stripe-payment-form' data-token='{{ publish_key }}' data-next-url='{{ request.build_absolute_uri }}' data-btn-title='Add Payment Method'></div>
-
-            {% else %}
-                <h1>Finalize Checkout</h1>
-                <p>Cart Items: {% for insuranceplan in object.cart.insuranceplans.all %}{{ insuranceplan }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                <p>Shipping Address: {{ object.shipping_address_final }}</p>
-                <p>Billing Address: {{ object.billing_address_final }}</p>
-                <p>Payment Method: {{ billing_profile.default_card }} (<a href="{{ billing_profile.get_payment_method_url }}?next={{ request.build_absolute_uri }}">Change</a>)</p>
-                <p>Cart Total: {{ object.cart.total }}</p>
-                <p>Shipping Total: {{ object.shipping_total }}</p>
-                <p>Order Total: {{ object.total }}</p>
-
-                <form class='form' method='POST' action="">{% csrf_token %}
-                    <button type='submit' class='btn btn-success'>Checkout</button>
-                </form>
-            {% endif %}
-        {% endif %}
-{% endif %}
+                            <form class='form' method='POST' action="">{% csrf_token %}
+                                <button type='submit' class='btn btn-success'>Checkout</button>
+                            </form>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
 
             </div>
         </div>

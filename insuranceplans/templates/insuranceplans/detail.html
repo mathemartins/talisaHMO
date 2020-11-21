@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
-
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
 {% block content %}
 
     <div class="colorlib-doctor">
@@ -32,41 +32,43 @@
 			</div>
 		</div>
 	</div>
+    <br>
+    <br>
 
-	<div class="colorlib-pricing">
-		<div class="container">
-			<div class="row animate-box">
-				<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">
-					<h2><span>Plan</span> Benefits </h2>
-					<p>Benefit of {{ object.title }}</p>
-				</div>
-			</div>
-			<div class="row animate-box">
-				<div class="col-md-6">
-					<ul class="plan">
-						<li><span>Nose job</span><span>$100</span></li>
-						<li><span>Breast implants</span><span>$120</span></li>
-						<li><span>Ear pinning</span><span>$140</span></li>
-						<li><span>Breast augmentation</span><span>$100</span></li>
-						<li><span>Eyelid lift</span><span>$110</span></li>
-						<li><span>Face lift</span><span>$100</span></li>
-						<li><span>Tattoo removal</span><span>$150</span></li>
-					</ul>
-				</div>
-				<div class="col-md-6">
-					<ul class="plan">
-						<li><span>Cosmetic surgery</span><span>$100</span></li>
-						<li><span>Facial Reconstruction</span><span>$120</span></li>
-						<li><span>Head &amp; neck reconstruction</span><span>$140</span></li>
-						<li><span>Liposuction</span><span>$100</span></li>
-						<li><span>Pediatric plastic surgery</span><span>$110</span></li>
-						<li><span>Skin Care</span><span>$100</span></li>
-						<li><span>Tummy Tuck</span><span>$150</span></li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+{#	<div class="colorlib-pricing">#}
+{#		<div class="container">#}
+{#			<div class="row animate-box">#}
+{#				<div class="col-md-6 col-md-offset-3 text-center colorlib-heading">#}
+{#					<h2><span>Plan</span> Benefits </h2>#}
+{#					<p>Benefit of {{ object.title }}</p>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="row animate-box">#}
+{#				<div class="col-md-6">#}
+{#					<ul class="plan">#}
+{#						<li><span>Nose job</span><span>$100</span></li>#}
+{#						<li><span>Breast implants</span><span>$120</span></li>#}
+{#						<li><span>Ear pinning</span><span>$140</span></li>#}
+{#						<li><span>Breast augmentation</span><span>$100</span></li>#}
+{#						<li><span>Eyelid lift</span><span>$110</span></li>#}
+{#						<li><span>Face lift</span><span>$100</span></li>#}
+{#						<li><span>Tattoo removal</span><span>$150</span></li>#}
+{#					</ul>#}
+{#				</div>#}
+{#				<div class="col-md-6">#}
+{#					<ul class="plan">#}
+{#						<li><span>Cosmetic surgery</span><span>$100</span></li>#}
+{#						<li><span>Facial Reconstruction</span><span>$120</span></li>#}
+{#						<li><span>Head &amp; neck reconstruction</span><span>$140</span></li>#}
+{#						<li><span>Liposuction</span><span>$100</span></li>#}
+{#						<li><span>Pediatric plastic surgery</span><span>$110</span></li>#}
+{#						<li><span>Skin Care</span><span>$100</span></li>#}
+{#						<li><span>Tummy Tuck</span><span>$150</span></li>#}
+{#					</ul>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</div>#}
 
 
 

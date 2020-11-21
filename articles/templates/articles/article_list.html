@@ -12,14 +12,14 @@
     <aside id="colorlib-hero" class="breadcrumbs">
         <div class="flexslider">
             <ul class="slides">
-            <li style="background-image: url(https://talisa-hmo.s3.eu-west-2.amazonaws.com/healthcare/images/img_bg_6.jpg);">
+            <li style="background-image: url(https://talisa-hmo.s3.eu-west-2.amazonaws.com/images/hospital-ward.jpg);">
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
                             <div class="slider-text-inner">
                                 <h1>Read Our <strong>Blog</strong></h1>
-                                <h2>html5 Bootstrap Templates Made by geetechlab.com</h2>
+                                <h2>Read our latest Blog Articles for more updates from us...</h2>
                             </div>
                         </div>
                     </div>
@@ -35,7 +35,7 @@
                 {% for article in articles %}
                     <div class="col-md-4 animate-box">
                         <div class="blog-entry">
-                            <a href="blog.html" class="blog-img" style="background-image: url({{ article.check_image_url }});">
+                            <a href="{% url 'articles:article_detail' slug=article.slug%}" class="blog-img" style="background-image: url({{ article.check_image_url }});">
                             </a>
                             <div class="desc">
                                 <p class="date">

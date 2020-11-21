@@ -1,32 +1,51 @@
 {% extends "base.html" %}
+{% load static %}
 
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
 
 {% block content %}
-<div class='text-center'>
-          <h1>{{ title }}</h1>
-          <h1>Send us an email we are willing to help...</h1>
-      </div>
-      <div class='container'>
-      <div class='row'>
-        <div class='col'>
-            
-            <div class='col-md-10 mx-auto'>
-            <form class='contact-form' method='POST' action='{% url "contact" %}'> {% csrf_token %}
-              {{ form.as_p }}
-              <button type='submit' class='btn btn-default'>Submit</button>
-            </form>
+<div class="colorlib-loader"></div>
 
+<div id="page">
 
-            <!-- <form method='POST'> {% csrf_token %}
-              <input type='text' class='form-control' placeholder="Name" name='fullname'>
-              <input type='email' class='form-control' placeholder="Email" name='email'>
-              <textarea name='content' class='form-control' placeholder="Your content"></textarea>
-              <button type='submit' class='btn btn-default'>Submit</button>
-            </form> -->
+    <aside id="colorlib-hero" class="breadcrumbs">
+        <div class="flexslider">
+            <ul class="slides">
+            <li style="background-image: url({% static 'images/anesthesia.jpg' %});">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                            <div class="slider-text-inner">
+                                <h1>Contact us</h1>
+                                <h2>Send us an email we are willing to help...</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            </ul>
+        </div>
+    </aside>
+
+    <div class='text-center'>
+        <h1>{{ title }}</h1>
+        <br>
+        <br>
+    </div>
+    <div class='container'>
+        <div class='row'>
+            <div class='col'>
+                <div class='col-md-10 mx-auto'>
+                    <form class='contact-form' method='POST' action='{% url "contact" %}'> {% csrf_token %}
+                      {{ form.as_p }}
+                      <button type='submit' class='btn btn-default'>Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-      </div>
-      </div>
+    </div>
     <br>
     <br>
+</div>
 {% endblock %}

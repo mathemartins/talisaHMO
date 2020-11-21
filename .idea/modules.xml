@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../geetechlab/.idea/geetechlab.iml" filepath="$PROJECT_DIR$/../geetechlab/.idea/geetechlab.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/talisa.iml" filepath="$PROJECT_DIR$/.idea/talisa.iml" />
     </modules>
   </component>

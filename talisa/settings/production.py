@@ -35,6 +35,9 @@ ADMINS = MANAGERS
 # Application definition
 
 INSTALLED_APPS = [
+    'admin_interface',
+    'colorfield',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -54,6 +57,8 @@ INSTALLED_APPS = [
     'search',
     'tags',
 ]
+
+X_FRAME_OPTIONS='SAMEORIGIN'
 
 AUTH_USER_MODEL = 'accounts.User'
 LOGIN_URL = '/login/'

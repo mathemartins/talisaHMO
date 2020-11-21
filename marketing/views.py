@@ -21,7 +21,7 @@ class MarketingPreferenceUpdateView(SuccessMessageMixin, UpdateView):
 
     def dispatch(self, *args, **kwargs):
         user = self.request.user
-        if not user.is_authenticated():
+        if not user.is_authenticated:
             return redirect("/login/?next=/settings/email/")  # HttpResponse("Not allowed", status=400)
         return super(MarketingPreferenceUpdateView, self).dispatch(*args, **kwargs)
 
@@ -80,6 +80,7 @@ class MailchimpWebhookView(CsrfExemptMixin, View):  # HTTP GET -- def get() CSRF
                         mailchimp_subscribed=mailchimp_subbed,
                         mailchimp_msg=str(data))
         return HttpResponse("Thank you", status=200)
+
 
 # def mailchimp_webhook_view(request):
 #     data = request.POST

@@ -44,7 +44,7 @@
                             <li><a href="{{ register_url }}">Register</a></li>
                             <li><a href="{{ login_url }}">Login</a></li>
                         {% endif %}
-                        {% if request.user.is_staff %}
+                        {% if request.user.is_superuser %}
                             <li><a href="/admin-Talisa-Ng/" class="btn btn-primary btn-outline">Admin</a></li>
                         {% endif %}
                         <li><a href="{{ article_url }}">Blog</a></li>

@@ -1,32 +1,84 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
+
+{% block aside_bar %}
+    <aside id="colorlib-hero" class="breadcrumbs">
+		<div class="flexslider">
+			<ul class="slides">
+                <li style="background-image: url({% static 'images/cost.jpg'%});">
+                    <div class="overlay"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-md-offset-2 col-md-pull-2 slider-text">
+                                <div class="slider-text-inner">
+                                    <h1>Check out</h1>
+                                    <h3>We urge you to review you orders before proceeding to checkout</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+	  	</div>
+	</aside>
+{% endblock aside_bar %}
+
 
 
 {% block content %}
+<div class="colorlib-loader"></div>
 
+<div id="page">
     <div class="container">
         <div class="row">
-            <div class="col-sm-8 col-sm-offset-3">
+            <div class="col-md-12 animate-box">
 
                 {% if not billing_profile %}
-
-                    <div class='row text-center'>
-                        <div class=''>
-                            <p class='lead'>Login</p>
+                    <br>
+                    <br>
+                    <br>
+                    <div class='row'>
+                        <div class="col-md-6 col-sm-offset-3 my-3 animate-box">
+                            <p class='lead'>Please login to continue</p>
                             {% include 'accounts/snippets/form.html' with form=login_form next_url=request.build_absolute_uri %}
                         </div>
-                        <div class=''>
-                            Continue as Guest
+                    </div>
+                    <br>
+                    <hr width="50%">
+                    <br>
+                    <div class='row'>
+                        <div class="col-md-6 col-sm-offset-3 my-3 animate-box">
+                            <p class='lead'>Continue as Guest</p>
                             {% url "guest_register" as guest_register_url %}
                             {% include 'accounts/snippets/form.html' with form=guest_form next_url=request.build_absolute_uri action_url=guest_register_url %}
                         </div>
                     </div>
+                    <br>
+                    <br>
+                    <br>
 
                 {% else %}
-
-                    <form>
-                      <script src="https://js.paystack.co/v1/inline.js"></script>
-                      <button type="button" onclick="payWithPaystack()"> Pay </button>
-                    </form>
+                    <br>
+                    <br>
+                    <br>
+                    <div class="row">
+						<div class="col-md-6 col-sm-offset-3">
+                            {% if request.user.is_authenticated %}
+                                <p class='lead'>Dear {% if request.user.get_full_name %}{{ request.user.get_full_name }} {% else %} {{ request.user.email }} {% endif %}click on below link to make you payment</p>
+                            {% else %}
+                                <p class='lead'>Click the link below to make payment</p>
+                            {% endif %}
+                            <form>
+                              <script src="https://js.paystack.co/v1/inline.js"></script>
+                              <button class="btn btn-info" type="button" onclick="payWithPaystack()"> Pay </button>
+                            </form>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
                 {% endif %}
 
                 {% block javascript %}
@@ -64,5 +116,5 @@
             </div>
         </div>
     </div>
-
+</div>
 {% endblock %}

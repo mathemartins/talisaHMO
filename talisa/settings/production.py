@@ -168,14 +168,16 @@ SECURE_HSTS_SECONDS = None
 SECURE_HSTS_INCLUDE_SUBDOMAINS = False
 SECURE_FRAME_DENY = False
 
+
 # SMTP Configuration
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST = 'smtp-relay.sendinblue.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'talisaprojects@gmail.com'
-DEFAULT_FROM_EMAIL = 'Talisa HMO <talisaprojects@gmail.com>'
-EMAIL_HOST_PASSWORD = '*********'
+EMAIL_HOST_USER = 'info@talisagroup.com'
+DEFAULT_FROM_EMAIL = 'Talisa HMO <info@talisagroup.com >'
+EMAIL_HOST_PASSWORD = 'zpkO63gPFSLX4amH'
+
 
 AWS_ACCESS_KEY_ID = 'AKIAYCP2FA6SBIAH5TOH'
 AWS_SECRET_ACCESS_KEY = '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'

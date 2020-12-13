@@ -1,14 +1,20 @@
 {% extends "base.html" %}
 
+{% load static %}
+
+{% block navbar %} {% include 'base/navbar.html' %} {% endblock navbar %}
 
 {% block content %}
 
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-sm-offset-3">
-                <h1 class='display-1 text-center'>Thank you for your order!!!</h1>
+    <div class="colorlib-loader"></div>
+
+    <div id="page">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <h1 class='display-1 text-center'>Thank you for your order!!!</h1>
+                </div>
             </div>
         </div>
     </div>
-
 {% endblock %}

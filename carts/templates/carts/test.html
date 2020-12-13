@@ -1,0 +1,26 @@
+<!-- place below the html form -->
+<script>
+  function payWithPaystack(){
+    var handler = PaystackPop.setup({
+      key: 'sk_live_1ed88617d99ea2834d711220218bf5b8b4dfa934',
+      email: '{{ request.user.email }}',
+      amount: {{ cart.subtotal }},
+      ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+      metadata: {
+         custom_fields: [
+            {
+                display_name: "{{ request.user.email }}",
+                variable_name: "{% if request.user.get_full_name %}{{ request.user.get_full_name }} {% else %} {{ request.user.email }} {% endif %}"
+            }
+         ]
+      },
+      callback: function(response){
+          alert('success. transaction ref is ' + response.reference);
+      },
+      onClose: function(){
+          alert('window closed');
+      }
+    });
+    handler.openIframe();
+  }
+</script>

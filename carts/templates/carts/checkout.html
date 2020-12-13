@@ -82,29 +82,41 @@
                 {% endif %}
 
                 {% block javascript %}
+                    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
                     <!-- place below the html form -->
                     <script>
                       function payWithPaystack(){
                         var handler = PaystackPop.setup({
-                          key: 'paste your key here',
-                          email: 'customer@email.com',
-                          amount: 10000,
-                          ref: ''+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
+                          key: 'pk_live_bda1ad02b4e2cb2dc9d3a0e1145fdf21f917b078',
+                          email: '{{ cart.user.email }}',
+                          amount: {{ cart.total|safe }}*100,
+                          currency: "NGN",
+                          ref: 'TLS-HLT_'+Math.floor((Math.random() * 1000000000) + 1), // generates a pseudo-unique reference. Please replace with a reference you generated. Or remove the line entirely so our API will generate one for you
                           metadata: {
                              custom_fields: [
                                 {
-                                    display_name: "Mobile Number",
-                                    variable_name: "mobile_number",
-                                    value: "+2348012345678"
+                                    display_name: "{{ request.user.email }}",
+                                    variable_name: "{% if request.user.get_full_name %}{{ request.user.get_full_name }} {% else %} {{ request.user.email }} {% endif %}"
                                 }
                              ]
                           },
                           callback: function(response){
-                              alert('success. transaction ref is ' + response.reference);
+                              console.log('success. transaction ref is ' + response.reference);
+                              swal({
+                                  title: "Transaction Successful!",
+                                  text: 'Success... transaction ref is ' + response.reference,
+                                  icon: "success",
+                                  button: "ok!",
+                                });
                           },
                           onClose: function(){
-                              alert('window closed');
+                              swal({
+                                  title: "Transaction Canceled!",
+                                  text: "Transaction Failed",
+                                  icon: "error",
+                                  button: "close",
+                                });
                           }
                         });
                         handler.openIframe();

@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 from accounts.forms import LoginForm, GuestForm
 from accounts.models import GuestEmail
@@ -68,8 +68,9 @@ def cart_update(request):
     return redirect("cart:home")
 
 
-def checkout_home(request):
+def checkout_home(request, pk):
     cart_obj, cart_created = Cart.objects.new_or_get(request)
+    cart = get_object_or_404(Cart, pk=pk)
     order_obj = None
     if cart_created or cart_obj.insuranceplans.count() == 0:
         return redirect("cart:home")
@@ -120,6 +121,7 @@ def checkout_home(request):
                 return redirect("cart:checkout")
     context = {
         "object": order_obj,
+        "cart": cart,
         "billing_profile": billing_profile,
         "login_form": login_form,
         "guest_form": guest_form,

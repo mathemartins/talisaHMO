@@ -5,12 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d04aa437-83c7-4dfe-8f51-c7413502a49a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/carts/templates/carts/test.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/talisa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/talisa.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/templates/carts/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/carts/templates/carts/checkout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/templates/carts/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/carts/templates/carts/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/carts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/carts/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talisa/settings/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/talisa/settings/local.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/talisa/settings/production.py" beforeDir="false" afterPath="$PROJECT_DIR$/talisa/settings/production.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,11 +38,46 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/carts/templates/carts/checkout.html">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/addresses/templates/addresses/form.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="49">
-              <caret line="107" column="50" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+            <state relative-caret-position="168">
+              <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/addresses/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/talisa/settings/local.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret line="169" selection-start-line="169" selection-end-line="176" selection-end-column="61" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/talisa/settings/production.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="178" column="61" selection-start-line="178" selection-start-column="61" selection-end-line="178" selection-end-column="61" />
             </state>
           </provider>
         </entry>
@@ -84,8 +120,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/billing/models.py" />
-        <option value="$PROJECT_DIR$/addresses/forms.py" />
         <option value="$PROJECT_DIR$/addresses/views.py" />
         <option value="$PROJECT_DIR$/analytics/templates/analytics/sales.html" />
         <option value="$PROJECT_DIR$/billing/templates/billing/payment-method.html" />
@@ -125,8 +159,6 @@
         <option value="$PROJECT_DIR$/templates/base/navbar.html" />
         <option value="$PROJECT_DIR$/templates/home_page.html" />
         <option value="$PROJECT_DIR$/templates/base.html" />
-        <option value="$PROJECT_DIR$/talisa/settings/local.py" />
-        <option value="$PROJECT_DIR$/talisa/settings/production.py" />
         <option value="$PROJECT_DIR$/accounts/templates/accounts/home.html" />
         <option value="$PROJECT_DIR$/accounts/templates/accounts/snippets/form.html" />
         <option value="$PROJECT_DIR$/carts/templates/carts/checkout-done.html" />
@@ -135,6 +167,10 @@
         <option value="$PROJECT_DIR$/carts/templates/carts/home.html" />
         <option value="$PROJECT_DIR$/carts/views.py" />
         <option value="$PROJECT_DIR$/carts/templates/carts/checkout.html" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/talisa/settings/local.py" />
+        <option value="$PROJECT_DIR$/accounts/models.py" />
+        <option value="$PROJECT_DIR$/talisa/settings/production.py" />
       </list>
     </option>
   </component>
@@ -160,20 +196,18 @@
             <path>
               <item name="talisaHMO" type="b2602c69:ProjectViewProjectNode" />
               <item name="talisaHMO" type="462c0819:PsiDirectoryNode" />
-              <item name="carts" type="462c0819:PsiDirectoryNode" />
+              <item name="accounts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="talisaHMO" type="b2602c69:ProjectViewProjectNode" />
               <item name="talisaHMO" type="462c0819:PsiDirectoryNode" />
-              <item name="carts" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="talisa" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="talisaHMO" type="b2602c69:ProjectViewProjectNode" />
               <item name="talisaHMO" type="462c0819:PsiDirectoryNode" />
-              <item name="carts" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
-              <item name="carts" type="462c0819:PsiDirectoryNode" />
+              <item name="talisa" type="462c0819:PsiDirectoryNode" />
+              <item name="settings" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -189,7 +223,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -401,24 +435,29 @@
       <workItem from="1606902014126" duration="4056000" />
       <workItem from="1607009464924" duration="3154000" />
       <workItem from="1607688955516" duration="2384000" />
-      <workItem from="1607772873950" duration="21403000" />
+      <workItem from="1607772873950" duration="23253000" />
+      <workItem from="1607897904316" duration="115000" />
+      <workItem from="1617397207221" duration="581000" />
+      <workItem from="1621833364348" duration="595000" />
+      <workItem from="1623911061302" duration="761000" />
+      <workItem from="1623939422953" duration="3306000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="189955000" />
+    <option name="totallyTimeSpent" value="197163000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14750378" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14728096" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.23895253" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.23728813" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -426,8 +465,9 @@
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.34697217" />
-      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.32242227" />
+      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.32881355" />
+      <window_info anchor="bottom" id="Sourcery" order="13" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -462,51 +502,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/billing/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1833">
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/billing/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="30" column="24" selection-start-line="30" selection-start-column="24" selection-end-line="30" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addresses/templates/addresses/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="30" column="6" lean-forward="true" selection-start-line="30" selection-start-column="6" selection-end-line="30" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/addresses/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="14" column="111" lean-forward="true" selection-start-line="14" selection-start-column="111" selection-end-line="14" selection-end-column="111" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/passwords/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-96">
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/insuranceplans/templates/insuranceplans/user-history.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -694,20 +689,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/talisa/settings/production.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="169" lean-forward="true" selection-start-line="169" selection-end-line="169" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/talisa/settings/local.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="19">
-          <caret line="169" selection-start-line="169" selection-end-line="176" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/accounts/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1662">
@@ -758,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/billing/templates/billing/payment-method.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/orders/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4212">
@@ -784,13 +758,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/insuranceplans/templates/insuranceplans/snippets/card.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="62">
-          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/insuranceplans/templates/insuranceplans/list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="172">
@@ -802,16 +769,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-241">
           <caret line="2" column="73" selection-start-line="2" selection-start-column="73" selection-end-line="2" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/accounts/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="219" lean-forward="true" selection-start-line="219" selection-end-line="219" />
-          <folding>
-            <element signature="e#0#30#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -870,6 +827,77 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="49">
           <caret line="107" column="50" selection-start-line="107" selection-start-column="50" selection-end-line="107" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/billing/templates/billing/payment-method.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insuranceplans/templates/insuranceplans/snippets/update-cart.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/insuranceplans/templates/insuranceplans/snippets/card.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="4" column="12" lean-forward="true" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addresses/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="263">
+          <caret line="43" column="35" selection-start-line="43" selection-start-column="35" selection-end-line="43" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addresses/templates/addresses/form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="7" column="15" selection-start-line="7" selection-start-column="15" selection-end-line="7" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/accounts/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="190" column="27" lean-forward="true" selection-start-line="190" selection-start-column="27" selection-end-line="190" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/addresses/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/talisa/settings/local.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="169" selection-start-line="169" selection-end-line="176" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/talisa/settings/production.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="178" column="61" selection-start-line="178" selection-start-column="61" selection-end-line="178" selection-end-column="61" />
         </state>
       </provider>
     </entry>

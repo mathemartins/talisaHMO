@@ -150,9 +150,7 @@ class EmailActivation(models.Model):
 
     def can_activate(self):
         qs = EmailActivation.objects.filter(pk=self.pk).confirmable()  # 1 object
-        if qs.exists():
-            return True
-        return False
+        return bool(qs.exists())
 
     def activate(self):
         if self.can_activate():
@@ -169,41 +167,40 @@ class EmailActivation(models.Model):
     def regenerate(self):
         self.key = None
         self.save()
-        if self.key is not None:
-            return True
-        return False
+        return self.key is not None
 
     def send_activation(self):
-        if not self.activated and not self.forced_expired:
-            if self.key:
-                base_url = getattr(settings, 'BASE_URL', 'https://www.talisa.com')
-                key_path = reverse("account:email-activate", kwargs={'key': self.key})  # use reverse
-                path = "{base}{path}".format(base=base_url, path=key_path)
-                context = {
-                    'path': path,
-                    'email': self.email
-                }
-                txt_ = get_template("registration/emails/verify.txt").render(context)
-                html_ = get_template("registration/emails/verify.html").render(context)
-                subject = '1-Click Email Verification'
-                from_email = settings.DEFAULT_FROM_EMAIL
-                recipient_list = [self.email]
-                sent_mail = send_mail(
-                    subject,
-                    txt_,
-                    from_email,
-                    recipient_list,
-                    html_message=html_,
-                    fail_silently=False,
-                )
-                return sent_mail
-        return False
+        if self.activated or self.forced_expired or not self.key:
+            return False
+        base_url = getattr(settings, 'BASE_URL', 'https://www.talisa.com')
+        key_path = reverse("account:email-activate", kwargs={'key': self.key})  # use reverse
+        path = "{base}{path}".format(base=base_url, path=key_path)
+        context = {
+            'path': path,
+            'email': self.email
+        }
+        txt_ = get_template("registration/emails/verify.txt").render(context)
+        html_ = get_template("registration/emails/verify.html").render(context)
+        subject = '1-Click Email Verification'
+        from_email = settings.DEFAULT_FROM_EMAIL
+        recipient_list = [self.email]
+        return send_mail(
+            subject,
+            txt_,
+            from_email,
+            recipient_list,
+            html_message=html_,
+            fail_silently=False,
+        )
 
 
 def pre_save_email_activation(sender, instance, *args, **kwargs):
-    if not instance.activated and not instance.forced_expired:
-        if not instance.key:
-            instance.key = unique_key_generator(instance)
+    if (
+        not instance.activated
+        and not instance.forced_expired
+        and not instance.key
+    ):
+        instance.key = unique_key_generator(instance)
 
 
 pre_save.connect(pre_save_email_activation, sender=EmailActivation)

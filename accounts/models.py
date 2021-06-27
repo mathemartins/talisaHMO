@@ -35,23 +35,21 @@ class UserManager(BaseUserManager):
         return user_obj
 
     def create_staffuser(self, email, full_name=None, password=None):
-        user = self.create_user(
+        return self.create_user(
             email,
             full_name=full_name,
             password=password,
             is_staff=True
         )
-        return user
 
     def create_superuser(self, email, full_name=None, password=None):
-        user = self.create_user(
+        return self.create_user(
             email,
             full_name=full_name,
             password=password,
             is_staff=True,
             is_admin=True
         )
-        return user
 
 
 class User(AbstractBaseUser):
@@ -137,7 +135,7 @@ class EmailActivation(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     email = models.EmailField()
     key = models.CharField(max_length=120, blank=True, null=True)
-    activated = models.BooleanField(default=False)
+    activated = models.BooleanField(default=True)
     forced_expired = models.BooleanField(default=False)
     expires = models.IntegerField(default=7)  # 7 Days
     timestamp = models.DateTimeField(auto_now_add=True)

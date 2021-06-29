@@ -27,7 +27,7 @@ ALLOWED_HOSTS = ['*']
 BASE_URL = '127.0.0.1:8000'
 
 MANAGERS = (
-    ('Talisa', "talisaprojects@gmail.com"),
+    ('Talisa', "geetechlab@gmail.com"),
 )
 
 ADMINS = MANAGERS
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'django.contrib.humanize',
     'django.contrib.staticfiles',
 
     'storages',
@@ -56,6 +57,7 @@ INSTALLED_APPS = [
     'insuranceplans',
     'search',
     'tags',
+    'articles',
 ]
 
 X_FRAME_OPTIONS='SAMEORIGIN'
